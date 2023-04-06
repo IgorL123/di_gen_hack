@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>My Page</title>
+        <title> Generate </title>
           <style>
             body {
               font-family: Arial, sans-serif;
@@ -55,11 +55,14 @@
       <h2>Zапрос Vыполнен</h2>
       <div>{{ result }}</div>
       <div class="button-container">
-        <a href="name.pdf" download>   <!-- Расположение файла-->
+        <a type="pdf" href="/pdf/download" download>   <!-- Расположение файла-->
             <button>Скачать PDF</button>
         </a>
-        <a href="name.docx" download>  <!-- Расположение файла-->
+        <a type="docx" href="/docx/download" download>  <!-- Расположение файла-->
             <button>Скачать Docx</button>
+        </a>
+           <a href="/" >
+            <button>Назад</button>
         </a>
       </div>
     </body>

@@ -6,8 +6,8 @@ import os
 import settings
 
 
-def generate(duties, requirements, position, company_name, director_name, filename="Result"):
-    out_path_ = os.getcwd() + "\\docs\\" + filename + ".docx"
+def generate(duties='', requirements='', position='', company_name='', director_name='', filename="Result"):
+    out_path_ = os.getcwd() + "/docs/" + filename + ".docx"
     word = win32.gencache.EnsureDispatch('Word.Application')
 
     # Путь к шаблону
@@ -33,4 +33,4 @@ def generate(duties, requirements, position, company_name, director_name, filena
     context = {'position': position, 'company_name': company_name, 'director_name': director_name}
     doc.render(context)
     doc.save(out_path_)
-    convert(out_path_, os.path.splitext(out_path_)[0]+".pdf")
+    convert(out_path_, os.path.splitext(out_path_)[0] + ".pdf")
