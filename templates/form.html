@@ -7,21 +7,32 @@
                           background-size: cover;
                           background-position: center center;
                           border-radius: 50%;
-                          width: 150px;
-                          height: 150px;
+                          width: 100px;
+                          height: 100px;
                           animation: spin 2s linear infinite;
                           position: fixed;
-                          left: 45%;
-                          top: 75%;
+                          left: 46.5%;
+                          bottom: 70px;
                           z-index: 9999;
                           transform: translate(-50%, -50%);
                           display: none;
                         }
+                #loader-text {
 
+                           transform: none;
+                           position: fixed;
+                           left: 50%;
+                           bottom: 20px;
+                           transform: translate(-50%, -50%);
+                           font-size: 1.5rem;
+                           font-weight: bold;
+                           color: #568DE5;
+                           display: none;
+                       }
               @keyframes spin {
-                0% { transform: rotate(0deg); }
-                100% { transform: rotate(360deg); }
-              }
+                        0% { transform: rotate(0deg); }
+                        100% { transform: rotate(360deg); }
+                      }
           </style>
 
          <title>My Form</title>
@@ -82,6 +93,7 @@
       </head>
       <body>
       <div id="loader"></div>
+        <div id="loader-text">Загрузка...</div>
         <form action="http://localhost:5000/result" method="POST">
           <h2>Вvедите Zапрос:</h2>
             <h3>Формат Zапроса: </h3>
@@ -91,10 +103,12 @@
             <script>
                   function showLoader() {
                     document.getElementById("loader").style.display = "block";
+                    document.getElementById("loader-text").style.display = "block";
                   }
 
                   function hideLoader() {
                     document.getElementById("loader").style.display = "none";
+                    document.getElementById("loader-text").style.display = "none";
                   }
 
                   document.querySelector("form").addEventListener("submit", function() {
