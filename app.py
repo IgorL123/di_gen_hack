@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, send_file
 from model import text2text
+from config import API_KEY
 import os
 
 app = Flask(__name__)
+os.environ['OPENAI_API_KEY'] = API_KEY
 
 
 @app.route('/')

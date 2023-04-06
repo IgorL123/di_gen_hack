@@ -1,11 +1,9 @@
 import openai
 import os
 prompt = "Генерация текста на русском языке на основе ключевых слов. Генерировать должность, обязанности и требования: "
-os.environ['OPENAI_API_KEY'] = "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"
 
 
 def text2text(text: str) -> str:
-
     openai.api_key = os.environ.get('OPENAI_API_KEY')
     pmt = prompt + f"{text}"
     completions = openai.Completion.create(
