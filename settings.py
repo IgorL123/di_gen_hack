@@ -1,4 +1,6 @@
-TEMPLATE_PATH = 'C:\\Users\\manyg\\Desktop\\projects\\python\\test\\wordGen\\Example.docx'
+import os
+
+TEMPLATE_PATH = os.getcwd()+"\\Example.docx"
 
 def set_font(cell):
     cell.Range.Font.Name = 'Times New Roman'
