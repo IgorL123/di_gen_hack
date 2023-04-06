@@ -1,6 +1,21 @@
-def text2text(text: str = "Заходят как-то в бар") -> str:
-    import ruprompts
-    from transformers import pipeline
-    ppln = pipeline("text-generation-with-prompt", prompt="konodyuk/prompt_rugpt3large_joke")
-    a = ppln(text)
-    return a
+import openai
+import os
+prompt = "Генерация текста на русском языке на основе ключевых слов. Генерировать должность, обязанности и требования: "
+os.environ['OPENAI_API_KEY'] = "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"
+
+
+def text2text(text: str) -> str:
+
+    openai.api_key = os.environ.get('OPENAI_API_KEY')
+    pmt = prompt + f"{text}"
+    completions = openai.Completion.create(
+        engine="text-davinci-002",
+        prompt=pmt,
+        max_tokens=2048,
+        n=1,
+        stop=None,
+        temperature=0.5,
+    )
+    text = completions.choices[0].text
+    return text
+
