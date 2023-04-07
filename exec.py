@@ -3,15 +3,17 @@ import win32api
 from docxtpl import DocxTemplate
 from docx2pdf import convert
 import os
-
 import settings
+
+import pythoncom
 
 def generate(targets, duties, requirements, position, company_name, director_name, filename = "Result"):
 
+    pythoncom.CoInitializeEx(0)
+    
     out_path_ = os.getcwd()+"\\docs\\"+filename+".docx"
     word = win32.gencache.EnsureDispatch('Word.Application')
 
-    #####################Путь к шаблону
     doc = word.Documents.Open(settings.TEMPLATE_PATH)
     table = doc.Tables(2)
 
@@ -27,12 +29,16 @@ def generate(targets, duties, requirements, position, company_name, director_nam
 
     k = 1
     for req_now in requirements:
-        #row = table.Rows.Add(table.Rows(4))
+        to_add_now = ''
+        for i in range(len(req_now)-1):
+            to_add_now+=req_now[i]+'\n'
+        to_add_now+=req_now[len(req_now)-1]
+
         if(k>6):
-            print("Предупреждение! Число элементов в списке, отвечающем за требования должности, превышает 6. Возможна ошибка.")
+            print("Warning! The number of items in the list responsible for the requirements of the position exceeds 6. An error is possible.")
             break
         cell = table.Cell(5+k, 2)
-        cell.Range.Text = req_now
+        cell.Range.Text = to_add_now
         settings.set_font(cell)
         k+=1
 

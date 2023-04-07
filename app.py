@@ -18,14 +18,29 @@ def result():
         text = request.form
         res = "Null"
         for key, value in text.items():
-            res = text2text(value)
-            try:
-                from exec import generate
-                from parse import parse
-                dict_res = parse(res)
-                generate(*dict_res)
-            except:
-                print("Use Windows bitch")
+            succesfull_generate = False
+            while(not succesfull_generate):
+                try:
+                    from exec import generate
+                    from parse import parse
+                    list_res = []
+
+                    while(list_res==[]):
+                        res = text2text(value)
+                        print(res)
+                        list_res = parse(res)
+
+                    generate(
+                                list_res[1],
+                                list_res[2],
+                                list_res[3],
+                                list_res[0],
+                                "Министерство обороны вымешленной Зимбебабвы",
+                                "Прогожин Е.В."
+                                )
+                    succesfull_generate = True
+                except Exception as e:
+                    print(e)
 
         return render_template("result.html", result=res)
 
@@ -33,7 +48,7 @@ def result():
 @app.route('/docx/download')
 def load2doc():
     return send_file(
-        os.getcwd() + "/docs/" + "Result.docx",
+        os.getcwd() + "\\docs\\" + "Result.docx",
         download_name='result.docx',
         as_attachment=True
     )
@@ -42,7 +57,7 @@ def load2doc():
 @app.route('/pdf/download')
 def load2pdf():
     return send_file(
-        os.getcwd() + "/docs/" + "Result.pdf",
+        os.getcwd() + "\\docs\\" + "Result.pdf",
         download_name='result.pdf',
         as_attachment=True
     )
