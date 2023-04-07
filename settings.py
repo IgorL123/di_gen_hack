@@ -1,6 +1,6 @@
 import os
 
-TEMPLATE_PATH = os.getcwd()+"\\Template.docx"
+TEMPLATE_PATH = os.getcwd() + "\\Template.docx"
 COMPANY_NAME = "Росатом"
 DIRECTOR = "Иванов И. И."
 
