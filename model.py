@@ -3,10 +3,12 @@ import os
 
 prompt = ""
 
+
 def get_promt():
     global prompt
     with open("promt.txt", "r", encoding="utf-8") as f:
         prompt = f.read()
+
 
 def text2text(text: str) -> str:
 

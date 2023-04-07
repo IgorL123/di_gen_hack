@@ -1,6 +1,9 @@
 import os
 
 TEMPLATE_PATH = os.getcwd()+"\\Template.docx"
+COMPANY_NAME = "Росатом"
+DIRECTOR = "Иванов И. И."
+
 
 def set_font(cell):
     cell.Range.Font.Name = 'Times New Roman'

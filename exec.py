@@ -4,8 +4,8 @@ from docxtpl import DocxTemplate
 from docx2pdf import convert
 import os
 import settings
-
 import pythoncom
+
 
 def generate(targets, duties, requirements, position, company_name, director_name, filename = "Result"):
 

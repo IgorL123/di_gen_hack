@@ -18,14 +18,15 @@ def result():
         text = request.form
         res = "Null"
         for key, value in text.items():
-            succesfull_generate = False
-            while(not succesfull_generate):
+            successfull_generate = False
+            while not successfull_generate:
                 try:
                     from exec import generate
                     from parse import parse
+                    import settings
                     list_res = []
 
-                    while(list_res==[]):
+                    while not list_res:
                         res = text2text(value)
                         print(res)
                         list_res = parse(res)
@@ -35,10 +36,10 @@ def result():
                                 list_res[2],
                                 list_res[3],
                                 list_res[0],
-                                "Министерство обороны вымешленной Зимбебабвы",
-                                "Прогожин Е.В."
+                                settings.COMPANY_NAME,
+                                settings.DIRECTOR
                                 )
-                    succesfull_generate = True
+                    successfull_generate = True
                 except Exception as e:
                     print(e)
 
