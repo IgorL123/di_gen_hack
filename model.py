@@ -2,7 +2,6 @@ import openai
 import os
 
 prompt = ""
-os.environ['OPENAI_API_KEY'] = "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"
 
 def get_promt():
     global prompt
@@ -27,9 +26,3 @@ def text2text(text: str) -> str:
     text = completions.choices[0].text
     return text
 
-
-print(
-text2text(
-"C++, низкоуровневое программирование, ассемблер, Git, GitHub, MySQL, PostgerSQL, Go, React, команда, разработчик, Москва Сити, конкуренция"
-)
-)

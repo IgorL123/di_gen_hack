@@ -4,7 +4,7 @@ from config import API_KEY
 import os
 
 app = Flask(__name__)
-os.environ['OPENAI_API_KEY'] = API_KEY
+os.environ["OPENAI_API_KEY"] = API_KEY
 
 
 @app.route('/')
@@ -33,7 +33,7 @@ def result():
 @app.route('/docx/download')
 def load2doc():
     return send_file(
-        os.getcwd() + "/docs/" + "Example.docx",
+        os.getcwd() + "/docs/" + "Result.docx",
         download_name='result.docx',
         as_attachment=True
     )
